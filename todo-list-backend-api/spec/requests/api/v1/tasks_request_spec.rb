@@ -20,6 +20,7 @@ RSpec.describe "Api::V1::Tasks", type: :request do
         new_task =  JSON.parse(response.body)
         expect(new_task['title']).to eq(requires_data[:task][:title])
         expect(new_task['description']).to eq(requires_data[:task][:description])
+        expect(new_task['done']).to eq(false)
       end
     end
   end
