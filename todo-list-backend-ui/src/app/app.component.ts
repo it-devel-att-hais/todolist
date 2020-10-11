@@ -25,9 +25,7 @@ export class AppComponent implements OnInit {
   });
 
   ngOnInit(): void {
-    this.taskService.getList().subscribe(tasks => {
-      this.sortTaskByStatus(tasks);
-    })
+    this.getTaskList();
   }
 
   createTask(taskForm: FormGroup) {
@@ -35,11 +33,21 @@ export class AppComponent implements OnInit {
       const data = {title: taskForm.value.title, description: taskForm.value.description};
 
       this.taskService.create({task: data}).subscribe(_ => {
-        this.taskService.getList().subscribe(tasks => {
-          this.sortTaskByStatus(tasks);
-        })
+        this.getTaskList();
       })
     }
+  }
+
+  changeTaskStatus(task: TaskModel) {
+    this.taskService.update(task).subscribe(_ => {
+      this.getTaskList();
+    })
+  }
+
+  getTaskList() {
+    this.taskService.getList().subscribe(tasks => {
+      this.sortTaskByStatus(tasks);
+    })
   }
 
   sortTaskByStatus(tasks: TaskModel[]) {
@@ -53,5 +61,14 @@ export class AppComponent implements OnInit {
         this.inProgressTaskList.push(task)
       }
     }
+    this.doneTaskList.sort((firstTask, secondTask) => {
+      if (new Date(firstTask.updated_at) < new Date(secondTask.updated_at)) {
+        return 1;
+      }
+      if (new Date(firstTask.updated_at) > new Date(secondTask.updated_at)) {
+        return -1;
+      }
+      return 0;
+    })
   }
 }

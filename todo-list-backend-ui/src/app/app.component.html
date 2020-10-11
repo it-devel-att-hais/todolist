@@ -16,7 +16,7 @@
             <mat-error>Значение не должно быть пустым</mat-error>
           </mat-form-field>
         </div>
-        <button type="submit" mat-raised-button color="accent">Add task</button>
+        <button type="submit" mat-raised-button color="accent">Добавить задачу</button>
       </form>
     </div>
   </div>
@@ -29,7 +29,8 @@
       <app-task-card
         class="mt-2"
         *ngFor="let inProgressTask of inProgressTaskList"
-        [task]="inProgressTask">
+        [task]="inProgressTask"
+        (changeTaskStatusEvent)="changeTaskStatus($event[0])">
       </app-task-card>
     </div>
     <div class="col-md-6">
@@ -37,7 +38,8 @@
       <app-task-card
         class="mt-2"
         *ngFor="let doneTask of doneTaskList"
-        [task]="doneTask">
+        [task]="doneTask"
+        (changeTaskStatusEvent)="changeTaskStatus($event[0])">
       </app-task-card>
     </div>
   </div>
