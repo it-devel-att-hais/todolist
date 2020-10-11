@@ -9,6 +9,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { CoreModule } from "./core/core.module";
 import { TaskCardComponent } from './task-card/task-card.component';
+import { AngularEditorModule } from "@kolkov/angular-editor";
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { TaskCardComponent } from './task-card/task-card.component';
     ReactiveFormsModule,
     CoreModule,
     FormsModule,
+    AngularEditorModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

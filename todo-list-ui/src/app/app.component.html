@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row mt-5">
-    <div class="col-12 col-md-9 col-lg-6">
+    <div class="col-12">
       <form [formGroup]="taskForm" (ngSubmit)="createTask(this.taskForm)">
         <div>
           <mat-form-field class="mat-form-field-w-100">
@@ -10,11 +10,7 @@
           </mat-form-field>
         </div>
         <div>
-          <mat-form-field class="mat-form-field-w-100">
-            <mat-label>Описание</mat-label>
-            <textarea rows="10" matInput formControlName="description" required></textarea>
-            <mat-error>Значение не должно быть пустым</mat-error>
-          </mat-form-field>
+          <angular-editor formControlName="description" [config]="editorConfig"></angular-editor>
         </div>
         <button type="submit" mat-raised-button color="accent">Добавить задачу</button>
       </form>

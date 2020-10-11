@@ -4,8 +4,6 @@
       {{task.title}}
     </mat-checkbox>
   </mat-card-title>
-  <mat-card-content>
-    <p>{{task.description}}</p>
-  </mat-card-content>
+  <mat-card-content [innerHTML]="task.description"></mat-card-content>
   <mat-card-subtitle>Дата создания: {{task.created_at|date: DATE_FORMAT}}</mat-card-subtitle>
 </mat-card>
