@@ -4,14 +4,16 @@
       <form [formGroup]="taskForm" (ngSubmit)="createTask(this.taskForm)">
         <div>
           <mat-form-field class="mat-form-field-w-100">
-            <mat-label>Title</mat-label>
+            <mat-label>Заголовок</mat-label>
             <input matInput formControlName="title" required>
+            <mat-error>Значение не должно быть пустым</mat-error>
           </mat-form-field>
         </div>
         <div>
           <mat-form-field class="mat-form-field-w-100">
-            <mat-label>Description</mat-label>
+            <mat-label>Описание</mat-label>
             <textarea rows="10" matInput formControlName="description" required></textarea>
+            <mat-error>Значение не должно быть пустым</mat-error>
           </mat-form-field>
         </div>
         <button type="submit" mat-raised-button color="accent">Add task</button>
@@ -23,22 +25,20 @@
 <div class="container mt-2">
   <div class="row">
     <div class="col-md-6">
-      <h2>In Progress</h2>
-      <mat-card class="mt-2" *ngFor="let inProgressTask of inProgressTaskList">
-        <mat-card-title>{{inProgressTask.title}}</mat-card-title>
-        <mat-card-content>
-          <p>{{inProgressTask.description}}</p>
-        </mat-card-content>
-      </mat-card>
+      <h2>В процессе</h2>
+      <app-task-card
+        class="mt-2"
+        *ngFor="let inProgressTask of inProgressTaskList"
+        [task]="inProgressTask">
+      </app-task-card>
     </div>
     <div class="col-md-6">
-      <h2>Done</h2>
-      <mat-card class="mt-2" *ngFor="let doneTask of doneTaskList">
-        <mat-card-title>{{doneTask.title}}</mat-card-title>
-        <mat-card-content>
-          <p>{{doneTask.description}}</p>
-        </mat-card-content>
-      </mat-card>
+      <h2>Законченные</h2>
+      <app-task-card
+        class="mt-2"
+        *ngFor="let doneTask of doneTaskList"
+        [task]="doneTask">
+      </app-task-card>
     </div>
   </div>
 </div>

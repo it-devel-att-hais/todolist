@@ -1,0 +1,9 @@
+<mat-card class="mt-2">
+  <mat-card-title>
+    <mat-checkbox class="example-margin" [(ngModel)]="task.done">{{task.title}}</mat-checkbox>
+  </mat-card-title>
+  <mat-card-content>
+    <p>{{task.description}}</p>
+  </mat-card-content>
+  <mat-card-subtitle>Дата создания: {{task.created_at|date: 'dd.mm.yyyy HH:MM'}}</mat-card-subtitle>
+</mat-card>

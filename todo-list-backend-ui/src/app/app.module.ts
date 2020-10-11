@@ -6,12 +6,14 @@ import { AppComponent } from './app.component';
 import { MaterialModule } from "./material/material.module";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { ReactiveFormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { CoreModule } from "./core/core.module";
+import { TaskCardComponent } from './task-card/task-card.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    TaskCardComponent,
   ],
   imports: [
     BrowserModule,
@@ -21,6 +23,7 @@ import { CoreModule } from "./core/core.module";
     NgbModule,
     ReactiveFormsModule,
     CoreModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
