@@ -1,4 +1,10 @@
 class Api::V1::TasksController < ApplicationController
+
+  def index
+    tasks = Task.all
+    render json: tasks.to_json
+  end
+
   def create
     task = Task.create(task_params)
     if task.save
