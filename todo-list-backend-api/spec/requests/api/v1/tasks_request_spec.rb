@@ -23,4 +23,29 @@ RSpec.describe "Api::V1::Tasks", type: :request do
       end
     end
   end
+
+  describe "GET #{API_V1_TASK_PATH}" do
+    COMMON_NUMBER_OF_TASKS = 10
+
+    let(:generate_tasks) do
+      create_list(:task, COMMON_NUMBER_OF_TASKS)
+    end
+
+    context "success get list of tasks" do
+
+      it "should return list of tasks" do
+        generate_tasks
+        get API_V1_TASK_PATH
+
+        expect(response).to have_http_status(:success)
+
+        tasks =  JSON.parse(response.body)
+        expect(tasks.length).to eq(COMMON_NUMBER_OF_TASKS)
+        tasks.each do |task|
+          expect(task['title']).to start_with 'Title'
+          expect(task['description']).to start_with 'Description'
+        end
+      end
+    end
+  end
 end
