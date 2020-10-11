@@ -9,7 +9,7 @@ import { TaskModel } from "./core/models";
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  title = 'todo-list-backend-ui';
+  title = 'todo-list-ui';
 
   inProgressTaskList: TaskModel[] = [];
   doneTaskList: TaskModel[] = [];
