@@ -1,7 +1,7 @@
 class Api::V1::TasksController < ApplicationController
 
   def index
-    tasks = Task.all
+    tasks = Task.all.reverse_order
     render json: tasks.to_json
   end
 
