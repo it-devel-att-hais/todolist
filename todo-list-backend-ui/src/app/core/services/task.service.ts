@@ -19,4 +19,8 @@ export class TaskService {
   create(data: any): Observable<TaskModel> {
     return this.apiService.post(`tasks`, data).pipe(task => task);
   }
+
+  update(task: TaskModel): Observable<TaskModel> {
+    return this.apiService.patch(`tasks/${task.id}`, task).pipe(task => task);
+  }
 }
